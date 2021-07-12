@@ -1,0 +1,12 @@
+@import "../../../../styles/styles.scss";
+
+.footer-container {
+  height: 2vh;
+  position: fixed;
+  bottom: 0;
+  background-color: $color-tertiary;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+  width: 100%;
+}

@@ -1,0 +1,38 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    font-family: "ArchiaBold", sans-serif;
+    font-size: $default-font-size;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    padding: 1.5rem 2rem;
+    display: inline-block;
+    border-radius: 0.8rem;
+    transition: all 0.2s;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    background-color: $color-primary-dark;
+    transform: translateY(-0.2rem);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--primary {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+}

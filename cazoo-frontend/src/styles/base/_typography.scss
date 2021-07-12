@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "ArchiaRegular";
+  src: url("../../assets/fonts/archia-regular-webfont.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "ArchiaMedium";
+  src: url("../../assets/fonts/archia-medium-webfont.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "ArchiaSemiBold";
+  src: url("../../assets/fonts/archia-semibold-webfont.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "ArchiaBold";
+  src: url("../../assets/fonts/archia-bold-webfont.woff2") format("woff2");
+}
+
+body {
+  font-family: "ArchiaRegular", sans-serif;
+  color: $color-grey;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.heading-primary {
+  color: $color-grey;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+  display: block;
+  font-size: 4rem;
+  font-weight: 900;
+}

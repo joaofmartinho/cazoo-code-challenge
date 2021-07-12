@@ -1,0 +1,37 @@
+@import "../../../styles/styles.scss";
+
+.landing-content {
+  height: 68vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-grow: 0;
+  align-items: center;
+}
+
+.landing-footer {
+  height: 2vh;
+  background-color: $color-tertiary;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.info {
+  max-width: 800px;
+  text-justify: distribute;
+  font-size: 1.6rem;
+}
+
+.info-action-container {
+  display: flex;
+}
+
+.search-button-container {
+  margin-left: 15px;
+  align-self: center;
+}
+
+.heading-primary {
+  margin-top: 100px;
+}

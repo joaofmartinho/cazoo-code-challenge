@@ -1,0 +1,31 @@
+@import "../../../../styles/styles.scss";
+
+.header {
+  background-color: $color-tertiary;
+  width: 100%;
+
+  &-normal {
+    height: 8vh;
+    text-align: left;
+
+    &-logo {
+      margin-left: 20px;
+      margin-top: 5px;
+      height: 90%;
+      width: 100px;
+      top: 10px;
+    }
+  }
+
+  &-landing {
+    height: 30vh;
+    text-align: center;
+
+    &-logo {
+      margin-top: 50px;
+      height: 90%;
+      width: 500px;
+      top: 120px;
+    }
+  }
+}
