@@ -12,23 +12,23 @@ export class CarService {
 
   private API_URL = environment.CAR_API_URL;
 
-  getCars(pageNumber = 0, pageSize = 10): Observable<PagableCarList> {
+  getCars = (pageNumber = 0, pageSize = 10): Observable<PagableCarList> => {
     return this.http
       .get(`${this.API_URL}/api/cars`, {
         params: new HttpParams().set('pageNumber', pageNumber.toString()).set('pageSize', pageSize.toString())
       })
       .pipe(map(res => res as PagableCarList));
-  }
+  };
 
-  getCar(id = ''): Observable<Car> {
+  getCar = (id = ''): Observable<Car> => {
     return this.http.get(`${this.API_URL}/api/cars/${id}`, {}).pipe(map(res => res as Car));
-  }
+  };
 
-  updateCar(id = '', car: Car): Observable<Car> {
+  updateCar = (id = '', car: Car): Observable<Car> => {
     return this.http.put(`${this.API_URL}/api/cars/${id}` + id, car).pipe(map(res => res as Car));
-  }
+  };
 
-  createCar(id = '', car: Car): Observable<Car> {
+  createCar = (id = '', car: Car): Observable<Car> => {
     return this.http.post(`${this.API_URL}/api/cars/${id}` + id, car).pipe(map(res => res as Car));
-  }
+  };
 }
