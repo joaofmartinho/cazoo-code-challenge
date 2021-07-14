@@ -2,7 +2,7 @@
   &,
   &:link,
   &:visited {
-    font-family: "ArchiaBold", sans-serif;
+    font-family: 'ArchiaBold', sans-serif;
     font-size: $default-font-size;
     text-transform: uppercase;
     text-align: center;
@@ -19,11 +19,6 @@
     white-space: nowrap;
   }
 
-  &:hover {
-    background-color: $color-primary-dark;
-    transform: translateY(-0.2rem);
-  }
-
   &:active,
   &:focus {
     outline: none;
@@ -31,8 +26,38 @@
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
   }
 
-  &--primary {
+  &-primary {
     background-color: $color-primary;
     color: $color-white;
+
+    &:hover {
+      background-color: $color-primary-dark;
+      transform: translateY(-0.2rem);
+
+      &:disabled {
+        background-color: $color-primary;
+        transform: none;
+      }
+    }
+  }
+
+  &-secondary {
+    background-color: $color-secondary;
+    color: $color-white;
+
+    &:hover {
+      background-color: $color-secondary-dark;
+      transform: translateY(-0.2rem);
+
+      &:disabled {
+        background-color: $color-secondary-dark;
+        transform: none;
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.3;
   }
 }

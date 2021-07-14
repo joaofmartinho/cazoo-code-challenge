@@ -1,37 +1,35 @@
-@import "../../../styles/styles.scss";
+@import '../../../styles/styles.scss';
 
-.landing-content {
-  height: 68vh;
+.landing {
+  padding: 0 2rem;
+  margin-bottom: 4vh;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   flex-grow: 0;
   align-items: center;
-}
 
-.landing-footer {
-  height: 2vh;
-  background-color: $color-tertiary;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 5px;
-}
+  &-heading {
+    margin-top: 10rem;
+  }
 
-.info {
-  max-width: 800px;
-  text-justify: distribute;
-  font-size: 1.6rem;
-}
+  &-content {
+    display: flex;
+    flex-wrap: wrap;
 
-.info-action-container {
-  display: flex;
-}
+    &-info {
+      margin-left: 1.5rem;
+      max-width: 80rem;
+      min-width: 20rem;
+      text-justify: distribute;
+      font-size: 1.6rem;
+      flex-shrink: 1;
+      padding-top: 2rem;
+    }
 
-.search-button-container {
-  margin-left: 15px;
-  align-self: center;
-}
-
-.heading-primary {
-  margin-top: 100px;
+    &-action {
+      margin-top: 2rem;
+      margin-left: 1.5rem;
+    }
+  }
 }

@@ -1,13 +1,9 @@
-<header
-  [ngClass]="
-    type === 'landing' ? 'header header-landing' : ' header header-normal'
-  "
->
-  <img
-    [ngClass]="
-      type === 'landing' ? 'header-landing-logo' : 'header-normal-logo'
-    "
-    src="./../../../assets/images/cazoo-logo.svg"
-    alt="Cazoo"
-  />
+<header id="header" [ngClass]="headerType === 'landing' ? 'header header-landing' : ' header header-normal'">
+  <a routerLink="/" type="button"
+    ><img
+      id="header-logo"
+      [ngClass]="headerType === 'landing' ? 'header-landing-logo' : 'header-normal-logo'"
+      src="./../../../assets/images/cazoo-logo.svg"
+      alt="Cazoo"
+  /></a>
 </header>

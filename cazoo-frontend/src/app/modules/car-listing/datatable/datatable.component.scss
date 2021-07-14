@@ -1,0 +1,33 @@
+@import '../../../../styles/styles.scss';
+
+.datatable {
+  border: 1px solid $color-grey-light;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+  mat-table,
+  mat-paginator {
+    font-family: inherit;
+  }
+
+  &-header-label {
+    font-family: 'ArchiaSemiBold', sans-serif;
+    font-size: $default-font-size;
+    color: $color-grey-dark;
+  }
+
+  &-footer {
+    width: 100%;
+    display: flex;
+    background-color: $color-white;
+    justify-content: space-between;
+  }
+
+  &-action-button {
+    font-size: 1.1rem;
+    padding: 1.1rem;
+
+    &:last-child:not(:only-child) {
+      margin-left: 0.6rem;
+    }
+  }
+}

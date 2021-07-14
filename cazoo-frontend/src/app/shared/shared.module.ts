@@ -1,24 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
-import { DatatableComponent } from './components/datatable/datatable.component';
+import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { NullReplacerPipe } from './pipe/null-replacer.pipe';
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, DatatableComponent],
-  imports: [
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
-    CommonModule,
-  ],
-  exports: [FooterComponent, HeaderComponent],
+  declarations: [FooterComponent, HeaderComponent, NullReplacerPipe],
+  imports: [CommonModule, RouterModule],
+  exports: [FooterComponent, HeaderComponent, NullReplacerPipe],
 })
 export class SharedModule {}
