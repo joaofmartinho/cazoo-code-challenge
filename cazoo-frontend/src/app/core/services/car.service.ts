@@ -25,10 +25,10 @@ export class CarService {
   };
 
   updateCar = (id = '', car: Car): Observable<Car> => {
-    return this.http.put(`${this.API_URL}/api/cars/${id}` + id, car).pipe(map(res => res as Car));
+    return this.http.put(`${this.API_URL}/api/cars/${id}`, car).pipe(map(res => res as Car));
   };
 
   createCar = (id = '', car: Car): Observable<Car> => {
-    return this.http.post(`${this.API_URL}/api/cars/${id}` + id, car).pipe(map(res => res as Car));
+    return this.http.post(`${this.API_URL}/api/cars/${id}`, car).pipe(map(res => res as Car));
   };
 }

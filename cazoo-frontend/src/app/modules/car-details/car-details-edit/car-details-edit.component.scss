@@ -1,0 +1,193 @@
+@import '../../../../styles/styles.scss';
+
+/* Edit Panel  */
+
+span,
+p,
+input,
+select,
+label {
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4vh;
+}
+
+.car-preview {
+  height: 200px;
+  border-radius: 1rem;
+}
+
+.car-details-readonly {
+  margin-top: 10rem;
+}
+
+.car-title {
+  font-family: 'ArchiaBold', sans-serif;
+  color: $color-grey-dark;
+  font-size: 4.5rem;
+  margin-bottom: 15px;
+  width: 100%;
+  display: block;
+}
+
+.car-info-container {
+  display: flex;
+}
+.form-group {
+  margin-right: 4.5rem;
+  margin-bottom: 1.3rem;
+}
+.car-info {
+  background-color: $color-grey-light;
+  padding: 1.3rem;
+  border-radius: 1rem;
+  margin-right: 45px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  span {
+    font-family: 'ArchiaRegular', sans-serif;
+    color: $color-grey;
+  }
+
+  p {
+    font-family: 'ArchiaSemiBold', sans-serif;
+    color: $color-grey-dark;
+    font-size: 2.5rem;
+  }
+}
+
+fieldset {
+  border: 0;
+}
+
+.search-button-return {
+  margin-top: 1rem;
+
+  .btn-return {
+    font-size: 1.3rem;
+    padding: 1.5rem 1.5rem;
+  }
+}
+
+.car-form-container {
+  margin-top: 6rem;
+  padding: 2.5rem 10rem;
+  border-radius: 1rem;
+  background-color: $color-grey-light;
+  font-family: 'ArchiaSemiBold', sans-serif;
+  display: flex;
+  label {
+    margin-top: 10px;
+    height: 4rem;
+    margin-right: 15px;
+    line-height: 2.4;
+
+    &[required]::after {
+      content: '*';
+      color: #e03d3db9;
+    }
+  }
+
+  input,
+  select {
+    padding-left: 0.3rem;
+    min-width: 35rem;
+    font-family: 'ArchiaRegular', sans-serif;
+    margin-top: 10px;
+    text-indent: 5px;
+    height: 3.5rem;
+    border: solid 1px #9797979a;
+    border-radius: 1rem;
+
+    &:disabled {
+      opacity: 0.4;
+    }
+  }
+
+  input:hover,
+  select:hover {
+    box-shadow: 0 0 5pt 0.5pt #d3d3d3;
+
+    &:disabled {
+      opacity: 0.4;
+      box-shadow: none;
+    }
+  }
+
+  input:focus,
+  select:focus {
+    box-shadow: 0 0 10pt 2pt #d3d3d3;
+    outline-width: 0px;
+    border: solid 2px #5a5959;
+  }
+
+  input:focus {
+    box-shadow: 0 0 10pt 2pt #d3d3d3;
+    outline-width: 0px;
+    border: solid 1.5px #5a5959;
+  }
+
+  input:disabled {
+    box-shadow: 0;
+    opacity: 0.7;
+  }
+
+  input.ng-invalid.ng-touched,
+  select.ng-invalid.ng-touched {
+    border: 1px solid #e03d3db9;
+  }
+
+  label.ng-invalid {
+    color: #e03d3db9;
+  }
+}
+
+.mat-datepicker-toggle {
+  margin-left: -40px;
+}
+
+.search-button-container {
+  background-color: $color-grey-light;
+  margin-top: 0.3rem;
+  padding: 0.3rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.form-inputs-container,
+.form-labels-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.2rem;
+
+  .form-group {
+    position: relative;
+
+    .inner-label {
+      font-family: 'ArchiaRegular', sans-serif;
+      font-size: 1.5rem;
+      color: $color-grey;
+      margin-right: 0px;
+    }
+  }
+
+  .form-group-error-message {
+    text-align: left;
+    position: absolute;
+    right: 0;
+    font-size: 1.3rem;
+    color: #e03d3db9;
+    margin-top: -4px;
+  }
+}
+
+.form-labels-container {
+  text-align: right;
+}
