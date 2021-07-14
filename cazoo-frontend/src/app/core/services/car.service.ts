@@ -14,7 +14,7 @@ export class CarService {
 
   getCars(pageNumber = 0, pageSize = 10): Observable<PagableCarList> {
     return this.http
-      .get(`${this.API_URL}/api/cars2`, {
+      .get(`${this.API_URL}/api/cars`, {
         params: new HttpParams().set('pageNumber', pageNumber.toString()).set('pageSize', pageSize.toString())
       })
       .pipe(map(res => res as PagableCarList));
