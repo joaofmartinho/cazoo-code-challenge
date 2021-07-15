@@ -3,10 +3,9 @@
 .datatable {
   border: 1px solid $color-grey-light;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-
-  mat-table,
-  mat-paginator {
-    font-family: inherit;
+  margin: 4rem 0;
+  * {
+    font-family: 'ArchiaRegular', sans-serif;
   }
 
   &-header-label {
@@ -16,6 +15,7 @@
   }
 
   &-footer {
+    font-size: $default-font-size;
     width: 100%;
     display: flex;
     background-color: $color-white;
@@ -28,6 +28,128 @@
 
     &:last-child:not(:only-child) {
       margin-left: 0.6rem;
+    }
+  }
+}
+
+::ng-deep div.mat-paginator-container {
+  font-family: 'ArchiaRegular', sans-serif;
+  height: 15px;
+  align-content: center;
+}
+
+@media screen and (max-width: 960px) {
+  .datatable {
+    border-radius: 1rem;
+    box-shadow: none;
+  }
+  .mat-elevation-z8 {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .mat-table {
+    background: transparent;
+    * {
+      box-sizing: border-box;
+    }
+
+    .mat-row {
+      border-radius: 1rem;
+      display: block;
+      overflow: hidden;
+      height: auto;
+      position: relative;
+      clear: both;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+      background-color: $color-white;
+      + .mat-row {
+        margin-top: 24px;
+      }
+    }
+
+    .mat-cell {
+      display: block;
+      width: 100%;
+      padding: 1.6rem 10vw;
+      margin: 3px 0;
+      border: 0 none;
+      &:first-child {
+        margin-top: 3rem;
+      }
+      &.m-card-sub-title {
+        margin-top: -8px;
+        padding: 0 48px 0 16px;
+        color: rgba(0, 0, 0, 0.54);
+      }
+
+      &.mat-column-actions {
+        padding: 1.6rem 10vw;
+        text-align: center;
+
+        button {
+          width: 100%;
+        }
+      }
+
+      &.mat-column-administration {
+        padding: 0 10vw;
+        text-align: center;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+
+    .card-label {
+      &:before {
+        content: attr(data-label);
+        display: inline;
+        font-weight: normal;
+        font-family: 'ArchiaBold', sans-serif;
+      }
+    }
+
+    .mat-column-star {
+      width: auto;
+      padding: 8px 0 0 !important;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  .datatable-footer {
+    display: block;
+
+    .datatable-action-button {
+      display: block;
+      width: 100%;
+      margin-top: 3rem;
+    }
+  }
+
+  ::ng-deep .mat-paginator {
+    .mat-paginator-container {
+      display: flex;
+      height: 100%;
+      height: 17rem;
+      justify-content: center;
     }
   }
 }

@@ -1,78 +1,95 @@
-<div *ngIf="pagableCarList && dataSource" class="datatable">
-  <mat-table [dataSource]="dataSource" matSort>
-    <!-- Maker Column -->
-    <ng-container matColumnDef="maker">
-      <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Maker </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.maker | nullReplacerPipe }} </mat-cell>
-    </ng-container>
+<div class="mat-elevation-z8">
+  <div *ngIf="pagableCarList && dataSource" class="datatable">
+    <mat-table [dataSource]="dataSource" matSort>
+      <!-- Maker Column -->
+      <ng-container matColumnDef="maker">
+        <mat-header-cell *matHeaderCellDef class="m-card-title datatable-header-label"> Maker </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="card-label" data-label="Maker: ">
+          {{ row.maker | nullReplacerPipe }}
+        </mat-cell>
+      </ng-container>
 
-    <!-- Model Column -->
-    <ng-container matColumnDef="model">
-      <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Model </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.model | nullReplacerPipe }} </mat-cell>
-    </ng-container>
+      <!-- Model Column -->
+      <ng-container matColumnDef="model">
+        <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Model </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="card-label" data-label="Model: ">
+          {{ row.model | nullReplacerPipe }}
+        </mat-cell>
+      </ng-container>
 
-    <!-- Year Column -->
-    <ng-container matColumnDef="year">
-      <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Year </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.year | nullReplacerPipe }} </mat-cell>
-    </ng-container>
+      <!-- Year Column -->
+      <ng-container matColumnDef="year">
+        <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Year </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="card-label" data-label="Year: ">
+          {{ row.year | nullReplacerPipe }}
+        </mat-cell>
+      </ng-container>
 
-    <!-- Color Column -->
-    <ng-container matColumnDef="color">
-      <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Color </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.color | nullReplacerPipe }} </mat-cell>
-    </ng-container>
+      <!-- Color Column -->
+      <ng-container matColumnDef="color">
+        <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Color </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="card-label" data-label="Color: ">
+          {{ row.color | nullReplacerPipe }}
+        </mat-cell>
+      </ng-container>
 
-    <!-- Subscription Price Column -->
-    <ng-container matColumnDef="subscriptionPrice">
-      <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Subscription Price </mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        {{
-          row.subscriptionPrice ? (row.subscriptionPrice | currency: 'EUR') : (row.subscriptionPrice | nullReplacerPipe)
-        }}
-      </mat-cell>
-    </ng-container>
+      <!-- Subscription Price Column -->
+      <ng-container matColumnDef="subscriptionPrice">
+        <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Subscription </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="card-label" data-label="Sub. Price: ">
+          {{
+            row.subscriptionPrice
+              ? (row.subscriptionPrice | currency: 'EUR')
+              : (row.subscriptionPrice | nullReplacerPipe)
+          }}
+        </mat-cell>
+      </ng-container>
 
-    <!-- Availability Date Column -->
-    <ng-container matColumnDef="availableFrom">
-      <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Availability Date </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.availableFrom | date | nullReplacerPipe }} </mat-cell>
-    </ng-container>
+      <!-- Availability Date Column -->
+      <ng-container matColumnDef="availableFrom">
+        <mat-header-cell *matHeaderCellDef class="datatable-header-label"> Available From </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="card-label" data-label="Available From: ">
+          {{ row.availableFrom | date | nullReplacerPipe }}
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <button class="btn btn-primary btn-text datatable-action-button" routerLink="/car-details/{{ row.id }}">
-          View More
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button class="btn btn-primary btn-text datatable-action-button" routerLink="/car-details/{{ row.id }}">
+            View More
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="administration">
+        <mat-header-cell *matHeaderCellDef class="datatable-header-label">Administration</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button
+            class="btn btn-secondary btn-text datatable-action-button"
+            routerLink="/car-details/edit/{{ row.id }}"
+          >
+            Edit
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+    </mat-table>
+
+    <mat-toolbar>
+      <mat-toolbar-row class="datatable-footer">
+        <button class="btn btn-secondary btn-text datatable-action-button" routerLink="/car-details/create">
+          Add new car
         </button>
-      </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="administration">
-      <mat-header-cell *matHeaderCellDef class="datatable-header-label"></mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <button class="btn btn-secondary btn-text datatable-action-button" routerLink="/car-details/edit/{{ row.id }}">
-          Edit
-        </button>
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
-  </mat-table>
-
-  <mat-toolbar>
-    <mat-toolbar-row class="datatable-footer">
-      <button class="btn btn--tertiary btn-text datatable-action-button" routerLink="/car-details/create">
-        Add new car
-      </button>
-      <mat-paginator
-        [length]="pagableCarList.totalItems"
-        [pageSizeOptions]="[10, 25, 50]"
-        (page)="getServerData($event)"
-      >
-      </mat-paginator>
-    </mat-toolbar-row>
-  </mat-toolbar>
+        <mat-paginator
+          [length]="pagableCarList.totalItems"
+          [pageSizeOptions]="[10, 20, 50]"
+          (page)="getServerData($event)"
+        >
+        </mat-paginator>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
 </div>

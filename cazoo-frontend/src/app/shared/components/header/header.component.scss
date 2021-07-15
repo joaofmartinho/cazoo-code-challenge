@@ -21,11 +21,20 @@
     text-align: center;
     height: 30vh;
 
+    @media screen and (max-width: 760px) {
+      height: 20vh;
+    }
+
     &-logo {
       margin-top: 5rem;
       height: 90%;
       width: 50rem;
       top: 12rem;
+
+      @media screen and (max-width: 760px) {
+        margin-top: 3rem;
+        width: 90vw;
+      }
     }
   }
 }

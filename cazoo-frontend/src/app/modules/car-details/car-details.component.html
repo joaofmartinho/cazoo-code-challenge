@@ -1,69 +1,79 @@
-<div class="form-container">
-  <div *ngIf="car" class="car-details-readonly">
+<div class="car-details-wrapper">
+  <div *ngIf="car" class="car-details-content">
     <div>
-      <div class="car-title">{{ car.maker }} {{ car.model }}</div>
-      <div class="car-info-container">
-        <!-- Maker and Model-->
+      <div class="car-details-content-title">{{ car.maker }} {{ car.model }}</div>
+      <div class="car-details-content-info">
+        <div class="info-wrapper">
+          <div class="info-group-wrapper">
+            <!-- Year -->
+            <div class="info-group">
+              <span>Year</span>
+              <p>{{ car.year | nullReplacerPipe }}</p>
+            </div>
 
-        <div class="car-info">
-          <!-- Year -->
-          <div class="form-group">
-            <span>Year </span>
-            <p>{{ car.year | nullReplacerPipe }}</p>
+            <!-- Color -->
+            <div class="info-group">
+              <span>Color</span>
+              <p>{{ car.color | nullReplacerPipe }}</p>
+            </div>
+
+            <!-- Subscription Price -->
+            <div class="info-group">
+              <span>Subscription Price </span>
+              <p>
+                {{
+                  car.subscriptionPrice ? car.subscriptionPrice + '€/month' : (car.subscriptionPrice | nullReplacerPipe)
+                }}
+              </p>
+            </div>
+
+            <div>
+              <!-- Availability Date -->
+              <div class="info-group">
+                <span>Available From </span>
+                <p>{{ car.availableFrom | date: 'dd/MM/yyyy' | nullReplacerPipe }}</p>
+              </div>
+            </div>
           </div>
+          <div class="info-group-wrapper">
+            <!-- Fuel Type -->
+            <div class="info-group">
+              <span>Fuel Type </span>
+              <p>{{ car.fuelType | nullReplacerPipe }}</p>
+            </div>
 
-          <!-- Color -->
-          <div class="form-group">
-            <span>Color </span>
-            <p>{{ car.color | nullReplacerPipe }}</p>
-          </div>
+            <!-- Availability Date -->
+            <div class="info-group">
+              <span>Mileage </span>
+              <p>{{ car.mileage | nullReplacerPipe }}</p>
+            </div>
 
-          <!-- Subscription Price -->
-          <div class="form-group">
-            <span>Subscription Price </span>
-            <p>
-              {{
-                car.subscriptionPrice ? car.subscriptionPrice + '€/month' : (car.subscriptionPrice | nullReplacerPipe)
-              }}
-            </p>
-          </div>
+            <!-- Availability Date -->
+            <div class="info-group">
+              <span>Transmission </span>
+              <p>{{ car.transmission | nullReplacerPipe }}</p>
+            </div>
 
-          <!-- Availability Date -->
-          <div class="form-group">
-            <span>Available From </span>
-            <p>{{ car.availableFrom | date: 'dd/MM/yyyy' | nullReplacerPipe }}</p>
-          </div>
-
-          <!-- Fuel Type -->
-          <div class="form-group">
-            <span>Fuel Type </span>
-            <p>{{ car.fuelType | nullReplacerPipe }}</p>
-          </div>
-
-          <!-- Availability Date -->
-          <div class="form-group">
-            <span>Mileage </span>
-            <p>{{ car.mileage | nullReplacerPipe }}</p>
-          </div>
-
-          <!-- Availability Date -->
-          <div class="form-group">
-            <span>Transmission </span>
-            <p>{{ car.transmission | nullReplacerPipe }}</p>
-          </div>
-
-          <!-- Availability Date -->
-          <div class="form-group">
-            <span>Seats </span>
-            <p>{{ car.seats | nullReplacerPipe }}</p>
+            <!-- Availability Date -->
+            <div class="info-group">
+              <span>Seats </span>
+              <p>{{ car.seats | nullReplacerPipe }}</p>
+            </div>
           </div>
         </div>
-
-        <img class="car-preview" src="../../../assets/images/car-preview-not-available.png" alt="Car Preview" />
+        <div>
+          <img
+            class="car-details-image-preview"
+            src="../../../assets/images/car-preview-not-available.png"
+            alt="Car Preview"
+          />
+          <div class="car-details-button-return">
+            <a routerLink="/car-listing" type="button" class="btn btn-secondary btn-text btn-return"
+              >Return to listing</a
+            >
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="search-button-return">
-      <a routerLink="/car-listing" type="button" class="btn btn-secondary btn-text btn-return">Return to listing</a>
     </div>
   </div>
 </div>

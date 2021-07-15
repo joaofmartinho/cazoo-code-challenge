@@ -8,11 +8,12 @@ import { AppComponent } from './app.component';
 import { CarListingModule } from './modules/car-listing/car-listing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import localePt from '@angular/common/locales/pt';
+import localeENGB from '@angular/common/locales/en-GB';
 import { registerLocaleData } from '@angular/common';
 import { HttpErrorInterceptor } from './core/interceptor/http-error.interceptor';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
-registerLocaleData(localePt);
+registerLocaleData(localeENGB);
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ registerLocaleData(localePt);
     CarListingModule,
     CarDetailsModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [
     {

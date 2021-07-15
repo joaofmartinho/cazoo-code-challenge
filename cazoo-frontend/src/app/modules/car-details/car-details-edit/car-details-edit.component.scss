@@ -1,24 +1,13 @@
 @import '../../../../styles/styles.scss';
 
-/* Edit Panel  */
-
-span,
-p,
-input,
-select,
-label {
-  font-size: 1.5rem;
-  line-height: 3rem;
-}
-
 .form-container {
   display: flex;
   justify-content: center;
-  padding-bottom: 4vh;
+  padding: 0 3rem 4vh 3rem;
 }
 
 .car-preview {
-  height: 200px;
+  height: 20rem;
   border-radius: 1rem;
 }
 
@@ -30,7 +19,7 @@ label {
   font-family: 'ArchiaBold', sans-serif;
   color: $color-grey-dark;
   font-size: 4.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
   width: 100%;
   display: block;
 }
@@ -38,21 +27,40 @@ label {
 .car-info-container {
   display: flex;
 }
+
+.form-group-wrapper {
+  position: relative;
+}
+
 .form-group {
   margin-right: 4.5rem;
   margin-bottom: 1.3rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 902px) {
+    margin-right: 0.5rem;
+  }
+
+  label {
+    min-width: 22rem;
+
+    @media screen and (max-width: 902px) {
+      text-align: left;
+    }
+  }
 }
 .car-info {
   background-color: $color-grey-light;
   padding: 1.3rem;
   border-radius: 1rem;
-  margin-right: 45px;
+  margin-right: 45rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
 
   span {
     font-family: 'ArchiaRegular', sans-serif;
-    color: $color-grey;
+    color: $color-grey-dark;
   }
 
   p {
@@ -76,89 +84,57 @@ fieldset {
 }
 
 .car-form-container {
-  margin-top: 6rem;
+  margin-top: 3rem;
   padding: 2.5rem 10rem;
   border-radius: 1rem;
   background-color: $color-grey-light;
   font-family: 'ArchiaSemiBold', sans-serif;
   display: flex;
   label {
-    margin-top: 10px;
+    margin-top: 1rem;
     height: 4rem;
-    margin-right: 15px;
+    margin-right: 1.5rem;
     line-height: 2.4;
 
     &[required]::after {
       content: '*';
-      color: #e03d3db9;
+      color: $color-alert-red;
     }
   }
 
-  input,
-  select {
-    padding-left: 0.3rem;
-    min-width: 35rem;
-    font-family: 'ArchiaRegular', sans-serif;
-    margin-top: 10px;
-    text-indent: 5px;
-    height: 3.5rem;
-    border: solid 1px #9797979a;
-    border-radius: 1rem;
-
-    &:disabled {
-      opacity: 0.4;
-    }
-  }
-
-  input:hover,
-  select:hover {
-    box-shadow: 0 0 5pt 0.5pt #d3d3d3;
-
-    &:disabled {
-      opacity: 0.4;
-      box-shadow: none;
-    }
-  }
-
-  input:focus,
-  select:focus {
-    box-shadow: 0 0 10pt 2pt #d3d3d3;
-    outline-width: 0px;
-    border: solid 2px #5a5959;
-  }
-
-  input:focus {
-    box-shadow: 0 0 10pt 2pt #d3d3d3;
-    outline-width: 0px;
-    border: solid 1.5px #5a5959;
-  }
-
-  input:disabled {
-    box-shadow: 0;
-    opacity: 0.7;
-  }
-
-  input.ng-invalid.ng-touched,
-  select.ng-invalid.ng-touched {
-    border: 1px solid #e03d3db9;
-  }
-
-  label.ng-invalid {
-    color: #e03d3db9;
+  @media screen and (max-width: 902px) {
+    padding: 2.5rem 1rem;
   }
 }
 
 .mat-datepicker-toggle {
-  margin-left: -40px;
+  margin-top: 0.8rem;
+  margin-left: -4rem;
+
+  @media screen and (max-width: 689px) {
+    margin-top: 0px;
+  }
 }
 
 .search-button-container {
   background-color: $color-grey-light;
   margin-top: 0.3rem;
-  padding: 0.3rem;
+  padding: 1rem 0.3rem;
   border-radius: 1rem;
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+  @media screen and (max-width: 902px) {
+    justify-content: space-evenly;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .btn:last-child:not(:only-child) {
+    margin-left: 0.6rem;
+  }
 }
 
 .form-inputs-container,
@@ -173,7 +149,7 @@ fieldset {
     .inner-label {
       font-family: 'ArchiaRegular', sans-serif;
       font-size: 1.5rem;
-      color: $color-grey;
+      color: $color-grey-dark;
       margin-right: 0px;
     }
   }
@@ -181,13 +157,25 @@ fieldset {
   .form-group-error-message {
     text-align: left;
     position: absolute;
-    right: 0;
     font-size: 1.3rem;
-    color: #e03d3db9;
-    margin-top: -4px;
+    color: $color-alert-red;
+    right: 50px;
+    top: 40px;
+
+    @media screen and (max-width: 689px) {
+      left: 0px;
+      top: 8.2rem;
+    }
   }
 }
 
 .form-labels-container {
   text-align: right;
+}
+
+@media screen and (max-width: 689px) {
+  input,
+  select {
+    margin-top: 0;
+  }
 }
