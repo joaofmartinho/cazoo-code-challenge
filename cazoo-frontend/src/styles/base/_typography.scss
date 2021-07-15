@@ -20,7 +20,7 @@
 
 body {
   font-family: 'ArchiaRegular', sans-serif;
-  color: $color-grey;
+  color: $color-grey-dark;
   font-weight: 400;
   line-height: 1.7;
 }
@@ -33,4 +33,11 @@ body {
   display: block;
   font-size: 4rem;
   font-weight: 900;
+}
+
+span,
+p,
+label {
+  font-size: 1.5rem;
+  line-height: 3rem;
 }

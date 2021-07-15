@@ -1,28 +1,29 @@
-@import "abstracts/variables";
+@import 'abstracts/variables';
 
-@import "components/button";
+@import 'components/button';
+@import 'components/input';
 
-@import "base/base";
-@import "base/typography";
+@import 'base/base';
+@import 'base/typography';
 
 @font-face {
-  font-family: "ArchiaRegular";
-  src: url("../assets/fonts/archia-regular-webfont.woff2") format("woff2");
+  font-family: 'ArchiaRegular';
+  src: url('../assets/fonts/archia-regular-webfont.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "ArchiaMedium";
-  src: url("../assets/fonts/archia-medium-webfont.woff2") format("woff2");
+  font-family: 'ArchiaMedium';
+  src: url('../assets/fonts/archia-medium-webfont.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "ArchiaSemiBold";
-  src: url("../assets/fonts/archia-semibold-webfont.woff2") format("woff2");
+  font-family: 'ArchiaSemiBold';
+  src: url('../assets/fonts/archia-semibold-webfont.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "ArchiaBold";
-  src: url("../assets/fonts/archia-bold-webfont.woff2") format("woff2");
+  font-family: 'ArchiaBold';
+  src: url('../assets/fonts/archia-bold-webfont.woff2') format('woff2');
 }
 
 html,
@@ -31,5 +32,5 @@ body {
 }
 body {
   margin: 0;
-  font-family: "ArchiaRegular", sans-serif;
+  font-family: 'ArchiaRegular', sans-serif;
 }

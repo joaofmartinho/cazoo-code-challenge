@@ -1,0 +1,45 @@
+input,
+select {
+  font-family: 'ArchiaRegular', sans-serif;
+  font-size: 1.5rem;
+  line-height: 3rem;
+  text-indent: 0.5rem;
+
+  min-width: 35rem;
+  height: 3.5rem;
+
+  padding-left: 0.3rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  border: solid 0.1rem $color-grey-dark;
+
+  &:disabled {
+    opacity: 0.4;
+  }
+
+  &:focus {
+    box-shadow: 0 0 10pt 2pt #d3d3d3;
+    outline-width: 0;
+    border: solid 0.2rem $color-grey-darker;
+  }
+
+  &:hover {
+    box-shadow: 0 0 5pt 0.5pt #d3d3d3;
+
+    &:disabled {
+      border: solid 0.1rem $color-grey;
+      box-shadow: none;
+      opacity: 0.7;
+    }
+  }
+
+  &:disabled {
+    border: solid 0.1rem $color-grey;
+    box-shadow: none;
+    opacity: 0.7;
+  }
+
+  &.ng-invalid.ng-touched {
+    border: 0.1rem solid $color-alert-red;
+  }
+}
