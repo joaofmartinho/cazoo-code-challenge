@@ -29,6 +29,6 @@ export class CarService {
   };
 
   createCar = (id = '', newCar: Car): Observable<Car> => {
-    return this.http.post(`${this.API_URL}/api/carsf/${id}`, newCar).pipe(map(res => res as Car));
+    return this.http.post(`${this.API_URL}/api/cars/${id}`, newCar).pipe(map(res => res as Car));
   };
 }
