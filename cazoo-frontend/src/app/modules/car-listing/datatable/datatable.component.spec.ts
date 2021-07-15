@@ -1,3 +1,5 @@
+import { AppModule } from './../../../app.module';
+import { CarService } from 'src/app/core/services/car.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DatatableComponent } from './datatable.component';
@@ -8,9 +10,10 @@ describe('DatatableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DatatableComponent ]
-    })
-    .compileComponents();
+      declarations: [DatatableComponent],
+      providers: [{ provide: CarService }],
+      imports: [AppModule]
+    }).compileComponents();
   });
 
   beforeEach(() => {
