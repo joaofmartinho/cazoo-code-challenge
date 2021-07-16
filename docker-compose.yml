@@ -8,9 +8,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: toor
     ports:
       - '27017:27017'
-  #    volumes:
-  #      - ./mongodb:/data/db
-  #      - ./initial-load/init-setting.js:/docker-entrypoint-initdb.d/init-setting.js:ro
+    volumes:
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
   client:
     image: cazoo-challenge-frontend

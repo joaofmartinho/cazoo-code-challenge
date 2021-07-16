@@ -103,7 +103,6 @@ exports.update = (req, res) => {
       } else res.send({ message: 'Car was updated successfully.' });
     })
     .catch(err => {
-      console.log(err);
       res.status(500).send({
         message: 'Error updating Car with id=' + id
       });
