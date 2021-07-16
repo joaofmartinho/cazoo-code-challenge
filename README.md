@@ -57,9 +57,23 @@ Due to the lack of time that I had on the time given to make the challenge, some
 
 ## Running the application
 
-### Dockerized version
+### Dockerized version (docker-hub)
 
-We need to build the images first since they are currently not distributed.
+I have currently deployed both frontend and backend images on docker-hub.
+
+To execute them, run on the root directory
+
+     $ docker-compose up
+
+This would start the following containers:
+
+- mongo on localhost:27017
+- cazoo-challenge-backend on localhost:8080
+- cazoo-challenge-frontend on localhost:80
+
+### Dockerized version (build your own images)
+
+We need to build locally the images first.
 
 1.  Enter the directory /cazoo-frontend and run
 
@@ -82,9 +96,8 @@ We need to build the images first since they are currently not distributed.
         $ docker build -t cazoo-challenge-backend .
 
 6.  After both images are created we go back to the root folder and run the docker-compose
-        
-        $ cd ..
-        $ docker-compose up
+    $ cd ..
+    $ docker-compose up
 
 This would start the following containers:
 

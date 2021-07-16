@@ -13,12 +13,12 @@ services:
       - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
   client:
-    image: cazoo-challenge-frontend
+    image: joaofmartinho/cazoo-challenge-frontend
     ports:
       - '80:80'
 
   backend:
-    image: cazoo-challenge-backend
+    image: joaofmartinho/cazoo-challenge-backend
     depends_on:
       - mongo
     ports:
