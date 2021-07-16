@@ -30,7 +30,6 @@ export class CarDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-
     if (id) {
       this.carService
         .getCar(id)

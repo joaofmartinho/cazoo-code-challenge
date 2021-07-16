@@ -22,7 +22,7 @@ import { DatatableComponent } from './datatable/datatable.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule,
-  ],
+    MatProgressSpinnerModule
+  ]
 })
 export class CarListingModule {}

@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8">
-  <div *ngIf="pagableCarList && dataSource" class="datatable">
+  <div *ngIf="dataSource" class="datatable">
     <mat-table [dataSource]="dataSource" matSort>
       <!-- Maker Column -->
       <ng-container matColumnDef="maker">
@@ -85,7 +85,7 @@
         </button>
         <mat-paginator
           [length]="pagableCarList.totalItems"
-          [pageSizeOptions]="[10, 20, 50]"
+          [pageSizeOptions]="pageSizeOptions"
           (page)="getServerData($event)"
         >
         </mat-paginator>

@@ -16,7 +16,6 @@ export class NotificationService {
     if (!type && !message) {
       return;
     }
-    const newNotification = new Notification(type, message);
     this._notification$.next(new Notification(type, message));
   }
 }

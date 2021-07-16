@@ -103,7 +103,7 @@ export class CarDetailsEditComponent implements OnInit {
         );
       } else if (this.action === 'create') {
         this.carService
-          .createCar(this.car.id, this.car)
+          .createCar(this.car)
           .pipe(takeUntil(this.destroySubscriptions$))
           .subscribe(
             () => {

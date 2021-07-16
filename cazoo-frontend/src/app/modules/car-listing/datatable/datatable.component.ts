@@ -1,5 +1,5 @@
 import { PagableCarList } from '../../../core/model/pagableCarList';
-import { Component, Input, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -54,10 +54,6 @@ export class DatatableComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnChanges = (changes: SimpleChanges): void => {
-    this.dataSource.data = changes.pagableCarList.currentValue?.cars;
-  };
-
   getServerData = (event: PageEvent): void => {
     this.carService
       .getCars(event.pageIndex, event.pageSize)
@@ -68,6 +64,7 @@ export class DatatableComponent implements OnInit, OnDestroy {
   };
 
   ngOnDestroy() {
+    this.destroySubscriptions$.next();
     this.destroySubscriptions$.complete();
   }
 }
