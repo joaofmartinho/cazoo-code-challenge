@@ -76,7 +76,7 @@ describe('CarDetailsEditComponent', () => {
     });
   });
 
-  fit('should not submit and create when form has errors', async () => {
+  it('should not submit and create when form has errors', async () => {
     routerUrlSpy.and.returnValue('/car-details/create');
     const spyCarService = spyOn(carService, 'createCar').and.callThrough();
     const spyOnSubmit = spyOn(component, 'onSubmit').and.callThrough();
@@ -93,7 +93,7 @@ describe('CarDetailsEditComponent', () => {
     });
   });
 
-  fit(
+  it(
     'should submit and create',
     <any>fakeAsync((): void => {
       routerUrlSpy.and.returnValue('/car-details/create');
