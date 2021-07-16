@@ -8,7 +8,7 @@ The frontend is done with Angular 12, using Sass for styling and Kasma/Jasmine f
 The basic backend solution is done with node.js with express.js and mongoose.js.
 
 For the database was used Mongo.DB.
-
+<br/><br/>
 ## Assumptions
 
 - There are no users and no login screen: everyone can edit the car.
@@ -19,7 +19,7 @@ For the database was used Mongo.DB.
 - The car properties color, fuel type, and transmission are dependent on the model.
 - The car properties added are just examples and there are other missing that are critical in teams of a real car demonstration like the engine power or the number of doors.
 - No cars can be deleted throughout the application, only edited.
-
+<br/><br/>
 ## Car Properties
 
 The car object that is represented on the database has the following properties:
@@ -34,7 +34,7 @@ The car object that is represented on the database has the following properties:
 - Mileage
 - Transmission
 - Seats
-
+<br/><br/>
 ## Possible improvements
 
 Due to the lack of time that I had on the time given to make the challenge, some improvements are needed to be done being some of them:
@@ -54,7 +54,7 @@ Due to the lack of time that I had on the time given to make the challenge, some
 
 - I created a backend to try node.js, express.js, and Mongo.DB for the first time so it could not only help me present the application but I could also learn along the way and experiment with new technologies.
   There are no validations on the backend, neither correct error handling, response codes, or tests.
-
+<br/><br/>
 ## Running the application
 
 ### Dockerized version (docker-hub)
@@ -70,7 +70,7 @@ This would start the following containers:
 - mongo on localhost:27017
 - cazoo-challenge-backend on localhost:8080
 - cazoo-challenge-frontend on localhost:80
-
+<br/><br/>
 ### Dockerized version (build your own images)
 
 We need to build locally the images first.
@@ -96,8 +96,9 @@ We need to build locally the images first.
         $ docker build -t cazoo-challenge-backend .
 
 6.  After both images are created we go back to the root folder and run the docker-compose
-    $ cd ..
-    $ docker-compose up
+    
+        $ cd ..
+        $ docker-compose up
 
 This would start the following containers:
 
@@ -130,3 +131,18 @@ To access the application just open the [localhost](https://localhost) on your b
         $ npm start
 
 You can now access the application on [localhost:4200](https://localhost:4200)
+
+<br/><br/>
+## Frontend Extra Commands
+
+To run the tests on the frontend: 
+
+        npx ng test
+
+To check the linting of the frontend
+
+        npx ng lint
+
+To generate a coverage report (will output at cazoo-frontend/coverage)
+
+        npx ng test --code-coverage
