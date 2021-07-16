@@ -3,6 +3,7 @@ version: '3'
 services:
   mongo:
     image: mongo
+    container_name: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: toor
@@ -18,6 +19,8 @@ services:
 
   backend:
     image: cazoo-challenge-backend
+    depends_on: 
+      - mongo
     ports:
       - '8080:8080'
     extra_hosts:
