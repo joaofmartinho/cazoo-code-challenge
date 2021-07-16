@@ -19,9 +19,11 @@ services:
 
   backend:
     image: cazoo-challenge-backend
-    depends_on: 
+    depends_on:
       - mongo
     ports:
       - '8080:8080'
+    environment:
+      - DB_URI=mongodb://root:toor@mongo:27017/cazoo-database?authSource=admin&authMechanism=SCRAM-SHA-1
     extra_hosts:
       - 'host.docker.internal:host-gateway'
