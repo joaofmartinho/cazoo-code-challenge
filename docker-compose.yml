@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: toor
+    ports:
+      - '27017:27017'
+  #    volumes:
+  #      - ./mongodb:/data/db
+  #      - ./initial-load/init-setting.js:/docker-entrypoint-initdb.d/init-setting.js:ro
+
+  client:
+    image: cazoo-challenge-frontend
+    ports:
+      - '80:80'
+
+  backend:
+    image: cazoo-challenge-backend
+    ports:
+      - '8080:8080'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'

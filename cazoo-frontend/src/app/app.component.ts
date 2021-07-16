@@ -38,7 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
 
         this.snackBar.open(notification.message, '', {
-          duration: 2500,
+          duration: 3500,
           panelClass: ['mat-toolbar', classType]
         });
       });

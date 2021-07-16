@@ -7,8 +7,9 @@ import { Car } from 'src/app/core/model/car';
 import { CarMaker } from 'src/app/core/model/carMaker';
 import { CarModel } from 'src/app/core/model/carModel';
 import { CarService } from 'src/app/core/services/car.service';
-import { MOCK_CAR_MAKER_LIST } from 'src/app/shared/constants/mocks/mockCarMakers';
+import { MOCK_CAR_MAKER_LIST } from 'src/app/shared/mocks/mockCarMakers';
 import { Subject } from 'rxjs';
+import { CarDetailActions, NotificationType } from 'src/app/shared/constants/contants';
 
 @Component({
   selector: 'app-car-details-edit',
@@ -53,21 +54,14 @@ export class CarDetailsEditComponent implements OnInit {
     this.router = router;
     this.formBuilder = formBuilder;
     this.startDate = new Date();
-
-    router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .pipe(takeUntil(this.destroySubscriptions$))
-      .subscribe(() => {
-        this.action = this.router.url.split('/')[2];
-      });
   }
 
   ngOnInit(): void {
+    this.action = this.router.url.split('/')[2];
     this.carForm = this.createForm();
 
-    if (this.action === 'edit') {
+    if (this.action === CarDetailActions.EDIT_CAR) {
       const id = this.route.snapshot.paramMap.get('id');
-
       if (id) {
         this.carService
           .getCar(id)
@@ -83,47 +77,25 @@ export class CarDetailsEditComponent implements OnInit {
   }
 
   onSubmit = () => {
-    console.log(this.carForm);
-    if (this.carForm.valid) {
-      this.car = Object.assign(this.car, this.carForm.value);
-
-      if (this.action === 'edit') {
-        this.carService.updateCar(this.car.id, this.car).subscribe(
-          () => {
-            this.notificationService.setNewNotification('success', `Car edited with success`);
-            this.router.navigate(['/car-listing']);
-          },
-          () => {
-            this.notificationService.setNewNotification(
-              'error',
-              `Error: An error occurred white editing the car with id ${this.car.id}`
-            );
-            return false;
-          }
-        );
-      } else if (this.action === 'create') {
-        this.carService
-          .createCar(this.car)
-          .pipe(takeUntil(this.destroySubscriptions$))
-          .subscribe(
-            () => {
-              this.notificationService.setNewNotification('success', `Car created with success`);
-              this.router.navigate(['/car-listing']);
-            },
-            () => {
-              this.notificationService.setNewNotification('error', `Error: An error occurred while creating the car`);
-              return false;
-            }
-          );
-      }
-    } else {
+    /* If form has any errors mark all controls as touched */
+    if (!this.carForm.valid) {
       Object.keys(this.carForm.controls).forEach(field => {
         const control = this.carForm.get(field);
         control?.markAsTouched({ onlySelf: true });
       });
+    } else {
+      /* Assign form value to car */
+      this.car = Object.assign(this.car, this.carForm.value);
+
+      if (this.action === CarDetailActions.EDIT_CAR) {
+        this.editCar(this.car.id, this.car);
+      } else if (this.action === CarDetailActions.CREATE_CAR) {
+        this.createCar(this.car);
+      }
     }
   };
 
+  /* Enables/Disables model based on maker value */
   onSelectCarMaker = (): void => {
     if (!this.carForm.controls.maker.value) {
       this.modelSelection = [];
@@ -138,6 +110,7 @@ export class CarDetailsEditComponent implements OnInit {
     }
   };
 
+  /* Enables/Disables form controls based on model value */
   onSelectCarModel = (): void => {
     if (!this.carForm.controls.model.value) {
       this.colorSelection = [];
@@ -160,24 +133,16 @@ export class CarDetailsEditComponent implements OnInit {
     }
   };
 
-  /* Auxiliary function check if the control contains any given error */
+  /* Return true if form contains any of the error names given */
   hasControlError = (controlName: string, toVerifyErrors: string[]): boolean => {
-    if (!this.carForm.controls[controlName].errors) {
-      return false;
-    } else if (!this.carForm.controls[controlName].touched) {
+    if (!this.carForm.controls[controlName].errors || !this.carForm.controls[controlName].touched) {
       return false;
     }
 
     const errors = Object.keys(this.carForm.controls[controlName].errors as Object);
-    let hasError: boolean = false;
+    const filteredArray = errors.filter(error => toVerifyErrors.includes(error));
 
-    toVerifyErrors.forEach(errorName => {
-      if (errors.includes(errorName)) {
-        hasError = true;
-      }
-    });
-
-    return hasError;
+    return filteredArray.length !== 0;
   };
 
   createForm = () => {
@@ -206,6 +171,44 @@ export class CarDetailsEditComponent implements OnInit {
       transmission: [{ value: '', disabled: true }],
       seats: ['', [Validators.pattern('^[0-9]*$'), Validators.min(1)]]
     });
+  };
+
+  editCar = (id: string, car: Car) => {
+    this.carService.updateCar(id, car).subscribe(
+      () => {
+        this.notificationService.setNewNotification(NotificationType.NOTIFICATION_SUCCESS, `Car edited with success`);
+        this.router.navigate(['/car-listing']);
+      },
+      () => {
+        this.notificationService.setNewNotification(
+          NotificationType.NOTIFICATION_ERROR,
+          `Error: An error occurred white editing the car with id ${this.car.id}`
+        );
+        return false;
+      }
+    );
+  };
+
+  createCar = (car: Car) => {
+    this.carService
+      .createCar(car)
+      .pipe(takeUntil(this.destroySubscriptions$))
+      .subscribe(
+        () => {
+          this.notificationService.setNewNotification(
+            NotificationType.NOTIFICATION_SUCCESS,
+            `Car created with success`
+          );
+          this.router.navigate(['/car-listing']);
+        },
+        () => {
+          this.notificationService.setNewNotification(
+            NotificationType.NOTIFICATION_ERROR,
+            `Error: An error occurred while creating the car`
+          );
+          return false;
+        }
+      );
   };
 
   ngOnDestroy = () => {

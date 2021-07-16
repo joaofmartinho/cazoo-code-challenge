@@ -5,6 +5,7 @@ import { Car } from 'src/app/core/model/car';
 import { CarService } from 'src/app/core/services/car.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NotificationType } from 'src/app/shared/constants/contants';
 
 @Component({
   selector: 'app-car-details',
@@ -39,7 +40,10 @@ export class CarDetailsComponent implements OnInit, OnDestroy {
             this.car = response;
           },
           err => {
-            this.notificationService.setNewNotification('error', `Error: Car with id ${id} could not be retrieved`);
+            this.notificationService.setNewNotification(
+              NotificationType.NOTIFICATION_ERROR,
+              `Error: Car with id ${id} could not be retrieved`
+            );
             this.router.navigate(['/car-listing']);
           }
         );

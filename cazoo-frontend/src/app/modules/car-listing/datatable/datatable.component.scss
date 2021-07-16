@@ -1,4 +1,4 @@
-@import '../../../../styles/styles.scss';
+@import '../../../../styles/abstracts/variables';
 
 .datatable {
   border: 1px solid $color-grey-light;
@@ -36,6 +36,20 @@
   font-family: 'ArchiaRegular', sans-serif;
   height: 15px;
   align-content: center;
+}
+
+.empty-list {
+  &-container {
+    padding: 3rem;
+  }
+
+  &-title {
+    margin-top: 2rem;
+  }
+
+  &-button {
+    margin-top: 3rem;
+  }
 }
 
 @media screen and (max-width: 960px) {

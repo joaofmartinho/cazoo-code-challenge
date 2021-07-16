@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8">
-  <div *ngIf="dataSource" class="datatable">
+  <div *ngIf="dataSource && pagableCarList" class="datatable">
     <mat-table [dataSource]="dataSource" matSort>
       <!-- Maker Column -->
       <ng-container matColumnDef="maker">
@@ -92,4 +92,8 @@
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
+</div>
+<div *ngIf="pagableCarList && pagableCarList.totalItems === 0" class="empty-list-container">
+  <h1 class="empty-list-title">There are no listed cars.</h1>
+  <button class="btn btn-secondary btn-text empty-list-button" routerLink="/car-details/create">Add new car</button>
 </div>

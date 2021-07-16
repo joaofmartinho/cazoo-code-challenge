@@ -1,3 +1,4 @@
+import { NotificationType } from 'src/app/shared/constants/contants';
 import { Notification } from './../model/notification';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
@@ -12,7 +13,7 @@ export class NotificationService {
     return this._notification$.asObservable();
   }
 
-  setNewNotification(type: string, message: string) {
+  setNewNotification(type: NotificationType, message: string) {
     if (!type && !message) {
       return;
     }

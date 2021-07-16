@@ -1,6 +1,6 @@
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { Notification } from './../../core/model/notification';
-import { MOCK_CAR_1 } from './../../shared/constants/mocks/mockCar';
+import { MOCK_CAR_1 } from '../../shared/mocks/mockCar';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -11,6 +11,7 @@ import { CarService } from 'src/app/core/services/car.service';
 import { MockCarService } from 'src/app/core/services/mocks/mock-car.service';
 
 import { CarDetailsComponent } from './car-details.component';
+import { NotificationType } from 'src/app/shared/constants/contants';
 
 describe('CarDetailsComponent', () => {
   let component: CarDetailsComponent;
@@ -84,7 +85,10 @@ describe('CarDetailsComponent', () => {
 
     fixture.whenStable().then(() => {
       expect(spyCarService).toHaveBeenCalledWith(errorID);
-      expect(spyNotification).toHaveBeenCalledWith('error', `Error: Car with id errorID could not be retrieved`);
+      expect(spyNotification).toHaveBeenCalledWith(
+        NotificationType.NOTIFICATION_ERROR,
+        `Error: Car with id errorID could not be retrieved`
+      );
     });
 
     expect(component).toBeTruthy();

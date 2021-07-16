@@ -5,7 +5,7 @@
         <div class="form-group form-labels-container">
           <!-- Maker Input Field-->
           <div class="form-group-wrapper">
-            <div class="form-group">
+            <div id="maker-input-group" class="form-group">
               <label required for="maker">Maker</label>
               <select class="custom-select" (change)="onSelectCarMaker()" formControlName="maker">
                 <option label=""></option>
@@ -16,7 +16,7 @@
           </div>
           <!-- Model Input Field-->
           <div class="form-group-wrapper">
-            <div class="form-group">
+            <div id="model-input-group" class="form-group">
               <label required for="model">Model </label>
               <select class="custom-select" (change)="onSelectCarModel()" formControlName="model">
                 <option value=""></option>
@@ -30,7 +30,7 @@
 
           <!-- Year Input Field-->
           <div class="form-group-wrapper">
-            <div class="form-group">
+            <div id="year-input-group" class="form-group">
               <label required for="year">Year </label>
               <input id="year" type="text" formControlName="year" maxlength="4" />
             </div>
@@ -43,7 +43,7 @@
 
           <!-- Color Input Field-->
           <div class="form-group-wrapper">
-            <div class="form-group">
+            <div id="color-input-group" class="form-group">
               <label required for="color">Color </label>
               <select class="custom-select" formControlName="color">
                 <option value=""></option>
@@ -57,7 +57,7 @@
 
           <!-- Subscription Price Input Field-->
           <div class="form-group-wrapper">
-            <div class="form-group">
+            <div id="subscriptionPrice-input-group" class="form-group">
               <label required for="subscriptionPrice"
                 >Subscription Price <label class="inner-label">(€/Month)</label></label
               >
@@ -75,7 +75,7 @@
 
           <!-- Availability Input Field-->
           <div class="form-group-wrapper">
-            <div class="form-group">
+            <div id="availableFrom-input-group" class="form-group">
               <label required for="availableFrom">Available From </label>
               <input
                 matInput
@@ -91,13 +91,13 @@
               *ngIf="this.carForm.controls.availableFrom.touched && carForm.controls.availableFrom.errors"
               class="form-group-error-message"
             >
-              Incorrect Date Format (dd/MM/YYYY)
+              Date with format (dd/MM/YYYY) and not in the past
             </p>
           </div>
 
           <!-- Fuel Type Input Field-->
           <div class="form-group-wrapper">
-            <div class="form-group">
+            <div id="fuelType-input-group" class="form-group">
               <label for="fuelType">Fuel Type</label>
               <select class="custom-select" formControlName="fuelType">
                 <option value=""></option>
@@ -109,7 +109,7 @@
           </div>
           <!-- Mileage Input Field-->
           <div class="form-group-wrapper">
-            <div class="form-group">
+            <div id="mileage-input-group" class="form-group">
               <label for="mileage">Mileage <label class="inner-label">(Km)</label></label>
               <input
                 id="mileage"
@@ -124,7 +124,7 @@
 
           <!-- Transmission Input Field-->
           <div class="form-group-wrapper">
-            <div class="form-group">
+            <div id="transmission-input-group" class="form-group">
               <label for="transmission">Transmission</label>
               <select class="custom-select" formControlName="transmission">
                 <option value=""></option>
@@ -137,7 +137,7 @@
 
           <!-- Seats Input Field-->
           <div class="form-group-wrapper">
-            <div class="form-group">
+            <div id="seats-input-group" class="form-group">
               <label class="control-label" formControlLabel="seats" for="seats">Seats</label>
               <input id="seats" name="seats" type="text" formControlName="seats" maxlength="3" />
             </div>
@@ -148,8 +148,10 @@
         </div>
       </div>
       <div class="search-button-container">
-        <button routerLink="/car-listing" type="button" class="btn btn-secondary btn-text">Cancel</button>
-        <button type="submit" class="btn btn-primary btn-text">Submit</button>
+        <button id="button-cancel" routerLink="/car-listing" type="button" class="btn btn-secondary btn-text">
+          Cancel
+        </button>
+        <button id="button-submit" type="submit" class="btn btn-primary btn-text">Submit</button>
       </div>
     </form>
   </div>

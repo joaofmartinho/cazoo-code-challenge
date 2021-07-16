@@ -1,8 +1,8 @@
-import { Notification } from './../model/notification';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { NotificationType } from 'src/app/shared/constants/contants';
 import { NotificationService } from '../services/notification.service';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
           errorMessage = `Error: ${error.error.message}`;
-          this.notificationService.setNewNotification('error', errorMessage);
+          this.notificationService.setNewNotification(NotificationType.NOTIFICATION_ERROR, errorMessage);
         } else {
           /* Send message for backend for example or deal with untreated calls */
         }

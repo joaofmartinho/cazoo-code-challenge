@@ -1,4 +1,4 @@
-@import '../../../../styles/styles.scss';
+@import '../../../../styles/abstracts/variables';
 
 .header {
   background-color: $color-tertiary;
@@ -9,8 +9,8 @@
     height: 8vh;
 
     &-logo {
-      margin-left: 20px;
-      margin-top: 5px;
+      margin-left: 2rem;
+      margin-top: 0.5rem;
       height: 90%;
       width: 15rem;
       top: 1rem;
